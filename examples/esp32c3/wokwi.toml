@@ -1,0 +1,8 @@
+[wokwi]
+version = 1
+elf = "target/riscv32imc-unknown-none-elf/release/es8311-example-esp32c3"
+firmware = "target/riscv32imc-unknown-none-elf/release/es8311-example-esp32c3"
+
+[[chip]]
+name = "es8311"
+binary = "../../sim/wokwi-chip/es8311.chip.wasm"

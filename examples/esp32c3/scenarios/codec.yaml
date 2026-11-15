@@ -1,0 +1,12 @@
+name: Identify, safe init, volume limit, playback path and standby
+version: 1
+author: Markus Mayer
+
+steps:
+  - wait-serial: 'ES8311 ok chip_id=0x8311 version=0x00'
+  # After init the DAC is muted at minimum volume with the analog blocks down.
+  - wait-serial: 'init mute=0x60 volume=0x00 power=0xFC dac=0x02 routing=0x08'
+  # The volume limit caps a full-scale request.
+  - wait-serial: 'volume limit=0xA9 requested=0xFF written=0xA9'
+  - wait-serial: 'playing mute=0x00 power=0x01 dac=0x00'
+  - wait-serial: 'standby reset=0x1F clocks=0x00 power=0xFC'

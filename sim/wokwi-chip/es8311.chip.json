@@ -1,0 +1,6 @@
+{
+  "name": "es8311",
+  "author": "Markus Mayer",
+  "pins": ["VCC", "GND", "SDA", "SCL", "CE"],
+  "controls": []
+}
