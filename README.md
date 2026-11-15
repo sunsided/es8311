@@ -69,6 +69,31 @@ The behavioral model in `es8311-sim` is used both as a fake I²C bus in host tes
 `examples/esp32c3` configures the emulated codec over I²C; its scenario checks the
 resulting register state on the serial output using `wokwi-cli`. I²S audio is not emulated.
 
+### Use the chip in your own Wokwi project
+
+Every [GitHub Release](https://github.com/sunsided/es8311/releases) carries the chip as
+`chip.zip`. Add a `chip-es8311` part and this dependency to your `diagram.json`, with the
+latest release version written without the tag's `v` (`@v0.1.0` fails to load):
+
+```json
+"dependencies": { "chip-es8311": "github:sunsided/es8311@0.1.0" }
+```
+
+This works on [wokwi.com](https://wokwi.com), in the Wokwi VS Code extension and with
+`wokwi-cli`; nothing needs to be built.
+
+### Run the example locally
+
+Needs [`wokwi-cli`](https://docs.wokwi.com/wokwi-ci/cli-installation) and a
+`WOKWI_CLI_TOKEN` from the [Wokwi CI dashboard](https://wokwi.com/dashboard/ci):
+
+```sh
+task wokwi:test
+```
+
+[`sim/wokwi-chip`](sim/wokwi-chip/README.md) describes building the chip and its pins;
+[`examples/esp32c3`](examples/esp32c3/README.md) the wiring and the scenario.
+
 ## Releasing
 
 Both crates share one version. From `main`, with the changes listed under
