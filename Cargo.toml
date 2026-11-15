@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["es8311-registers"]
+members = ["es8311-registers", "es8311-sim"]
 exclude = ["sim/wokwi-chip", "examples"]
 
 [workspace.package]
@@ -15,8 +15,11 @@ rust-version = "1.85"
 [workspace.dependencies]
 bitfield-struct = "0.13.0"
 defmt = "1.0.1"
+embassy-futures = "0.1.2"
+fake-bus = "0.1.0"
 hardware-registers = { version = "0.4.0", default-features = false, features = ["i2c"] }
 es8311-registers = { version = "0.1.0", path = "es8311-registers" }
+es8311-sim = { path = "es8311-sim" }
 
 [workspace.lints.clippy]
 # Modules live in `name.rs` plus `name/`, never in `name/mod.rs`.
