@@ -21,7 +21,7 @@ embassy-futures = "0.1.2"
 fake-bus = "0.1.0"
 hardware-registers = { version = "0.4.0", default-features = false, features = ["i2c"] }
 es8311-registers = { version = "0.1.0", path = "es8311-registers" }
-# The driver's package name; its library is imported as `es8311`.
+# The driver's package name; its library is imported as `es8311_ng`.
 es8311-ng = { version = "0.1.0", path = "es8311-ng" }
 es8311-sim = { path = "es8311-sim" }
 

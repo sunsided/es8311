@@ -6,10 +6,10 @@
 #![no_std]
 #![no_main]
 
-use es8311::registers::{
+use es8311_ng::registers::{
     ClockSwitch, DacControl, DacPower, GpioControl, ReadableRegister, Reset, SystemPower,
 };
-use es8311::{Config, Es8311};
+use es8311_ng::{Config, Es8311};
 use esp_backtrace as _;
 use esp_hal::delay::Delay;
 use esp_hal::i2c::master::{Config as I2cConfig, I2c};

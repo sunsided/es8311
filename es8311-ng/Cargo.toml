@@ -14,10 +14,6 @@ repository.workspace = true
 edition.workspace = true
 rust-version.workspace = true
 
-[lib]
-# Imported as `es8311`, so the package name only appears in manifests.
-name = "es8311"
-
 [lints]
 workspace = true
 
