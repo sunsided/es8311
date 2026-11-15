@@ -1,0 +1,34 @@
+[package]
+name = "es8311-registers"
+description = "A typed map of the Everest Semiconductor ES8311 audio codec registers"
+categories = ["embedded", "hardware-support", "no-std"]
+keywords = ["embedded-hal", "es8311", "audio", "codec", "registers"]
+readme = "README.md"
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+repository.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[features]
+defmt = ["dep:defmt"]
+
+[dependencies]
+bitfield-struct.workspace = true
+defmt = { workspace = true, optional = true }
+hardware-registers.workspace = true
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[package.metadata.release]
+tag = false
+pre-release-replacements = [
+    { file = "CHANGELOG.md", search = "## \\[Unreleased\\]", replace = "## [Unreleased]\n\n## [{{version}}] - {{date}}\n\n[{{version}}]: https://github.com/sunsided/es8311/releases/tag/v{{version}}", exactly = 1 },
+]

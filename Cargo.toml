@@ -1,0 +1,23 @@
+[workspace]
+resolver = "3"
+members = ["es8311-registers"]
+exclude = ["sim/wokwi-chip", "examples"]
+
+[workspace.package]
+version = "0.1.0"
+authors = ["Markus Mayer <widemeadows@gmail.com>"]
+license = "EUPL-1.2 OR MIT OR Apache-2.0"
+homepage = "https://github.com/sunsided/es8311"
+repository = "https://github.com/sunsided/es8311"
+edition = "2024"
+rust-version = "1.85"
+
+[workspace.dependencies]
+bitfield-struct = "0.13.0"
+defmt = "1.0.1"
+hardware-registers = { version = "0.4.0", default-features = false, features = ["i2c"] }
+es8311-registers = { version = "0.1.0", path = "es8311-registers" }
+
+[workspace.lints.clippy]
+# Modules live in `name.rs` plus `name/`, never in `name/mod.rs`.
+mod_module_files = "deny"
