@@ -13,10 +13,10 @@
 
 Built on [`embedded-hal`] 1.0 and the [`es8311-registers`] map. Enable the `async`
 feature for a driver on [`embedded-hal-async`]. The package is `es8311-ng`; the library
-is imported as `es8311`.
+is imported as `es8311_ng`.
 
 ```rust,ignore
-use es8311::{Config, Es8311};
+use es8311_ng::{Config, Es8311};
 
 let mut codec = Es8311::new(i2c); // 7-bit address 0x18 (CE low)
 codec.set_max_volume(0xA9)?;       // board-specific limit, see below

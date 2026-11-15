@@ -7,7 +7,7 @@ edition = "2024"
 publish = false
 
 [dependencies]
-es8311 = { package = "es8311-ng", path = "../../es8311-ng" }
+es8311-ng = { path = "../../es8311-ng" }
 embedded-hal = "1.0.0"
 esp-backtrace = { version = "0.20.0", features = ["esp32c3", "panic-handler", "println"] }
 esp-bootloader-esp-idf = { version = "0.6.0", features = ["esp32c3"] }

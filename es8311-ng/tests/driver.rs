@@ -1,8 +1,8 @@
 //! Driver tests against the behavioral model.
 
 use core::cell::RefCell;
-use es8311::registers::{DacControl, RegisterAddress as Reg};
-use es8311::{Config, Error, Es8311, RESET_DELAY_MS, SerialFormat, WordLength};
+use es8311_ng::registers::{DacControl, RegisterAddress as Reg};
+use es8311_ng::{Config, Error, Es8311, RESET_DELAY_MS, SerialFormat, WordLength};
 use es8311_sim::{Es8311Model, FakeI2c};
 
 /// Records the total requested delay.
@@ -33,7 +33,7 @@ fn init(model: &RefCell<Es8311Model>) -> Es8311<FakeI2c<'_>> {
 fn identifies_the_chip() {
     let model = RefCell::new(Es8311Model::new());
     let mut codec = Es8311::new(FakeI2c::new(&model));
-    assert_eq!(codec.chip_id().unwrap(), es8311::ES8311_CHIP_ID);
+    assert_eq!(codec.chip_id().unwrap(), es8311_ng::ES8311_CHIP_ID);
     assert_eq!(codec.chip_version().unwrap(), 0x00);
     assert!(codec.identify().unwrap());
 }
@@ -123,7 +123,7 @@ fn playback_path() {
 fn volume_never_exceeds_the_limit() {
     let model = RefCell::new(Es8311Model::new());
     let mut codec = init(&model);
-    assert_eq!(codec.max_volume(), es8311::DAC_VOLUME_MAX);
+    assert_eq!(codec.max_volume(), es8311_ng::DAC_VOLUME_MAX);
 
     codec.set_volume(0xFF).unwrap();
     assert_eq!(codec.volume().unwrap(), 0xFF);
@@ -202,7 +202,7 @@ fn init_disables_loopback() {
     let model = RefCell::new(Es8311Model::new());
     let mut codec = Es8311::new(FakeI2c::new(&model));
     codec
-        .write_register(es8311::registers::GpioControl::from(0xD8))
+        .write_register(es8311_ng::registers::GpioControl::from(0xD8))
         .unwrap();
     assert!(model.borrow().loopback_enabled());
 
@@ -226,7 +226,7 @@ fn modify_register_preserves_other_bits() {
 #[test]
 fn alternate_address() {
     let model = RefCell::new(Es8311Model::with_ce(true));
-    let mut codec = Es8311::with_address(FakeI2c::new(&model), es8311::ALTERNATE_DEVICE_ADDRESS);
+    let mut codec = Es8311::with_address(FakeI2c::new(&model), es8311_ng::ALTERNATE_DEVICE_ADDRESS);
     assert!(codec.identify().unwrap());
 
     let mut codec = Es8311::new(codec.release());
@@ -241,7 +241,7 @@ fn alternate_address() {
 fn async_driver() {
     use embassy_futures::block_on;
     let model = RefCell::new(Es8311Model::new());
-    let mut codec = es8311::asynch::Es8311::new(FakeI2c::new(&model));
+    let mut codec = es8311_ng::asynch::Es8311::new(FakeI2c::new(&model));
     block_on(async {
         assert!(codec.identify().await.unwrap());
         codec

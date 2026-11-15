@@ -16,7 +16,7 @@
 | [`es8311-sim`](es8311-sim)             | A register-level behavioral model for tests and emulation.     |
 
 The crates.io name `es8311` belongs to another project; the driver is published as
-`es8311-ng` and imported as `es8311`.
+`es8311-ng` and imported as `es8311_ng`.
 
 The register map follows the ES8311 datasheet (Revision 10.0, January 2021) and the
 ES8311 user guide (Rev 1.11, September 2018). Facts the Everest documents lack, such as
