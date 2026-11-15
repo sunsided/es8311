@@ -69,6 +69,9 @@ The behavioral model in `es8311-sim` is used both as a fake I²C bus in host tes
 `examples/esp32c3` configures the emulated codec over I²C; its scenario checks the
 resulting register state on the serial output using `wokwi-cli`. I²S audio is not emulated.
 
+**[Try it in the browser](https://wokwi.com/projects/480780808722372609)**: an ESP32-C3 talking to the emulated ES8311 on
+wokwi.com. It shows the I²C configuration only, with no audio.
+
 ### Use the chip in your own Wokwi project
 
 Every [GitHub Release](https://github.com/sunsided/es8311/releases) carries the chip as
@@ -81,6 +84,9 @@ latest release version written without the tag's `v` (`@v0.1.0` fails to load):
 
 This works on [wokwi.com](https://wokwi.com), in the Wokwi VS Code extension and with
 `wokwi-cli`; nothing needs to be built.
+
+For a browser demo, [`examples/arduino-esp32c3`](examples/arduino-esp32c3/README.md) has an
+Arduino sketch and `diagram.json` to paste into a new wokwi.com project.
 
 ### Run the example locally
 
