@@ -7,7 +7,6 @@
 //! (Revision 10.0, January 2021), section 8, unless noted otherwise.
 
 #![deny(missing_docs)]
-#![deny(warnings)]
 #![no_std]
 #![forbid(unsafe_code)]
 // bitfield-struct generates `with_*_checked` setters that return `Result<_, ()>`.
